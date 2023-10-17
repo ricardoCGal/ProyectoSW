@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900');
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #141E30;
+    background: linear-gradient(to right, #24243e, #141E30, #0f0c29); 
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 2vw;
+}
+
+input[type="text"], input[type="password"]{
+    outline: none;
+    padding: 20px;
+    display: block;
+    width: 320px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 20px auto;
+}
+  
+  input[type="submit"] {
+    padding: 20px;
+    color: #fff;
+    background-color: #00002E;
+    width: 362px;
+    margin: 20px auto;
+    margin-top: 0;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+  input[type="submit"]:hover {
+    background-color: #0F0C29;
+}
+p{
+    color: white;
+    font-size: 1vw;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #39A1E6;
+}
+header{
+    border-bottom: px solid #eee;
+    padding: 20px 0;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+header a{
+    text-decoration: none;
+    font-family: 'Pirata One', cursive;
+    font-size: 3rem;
+    color: #F7971E;
+}
