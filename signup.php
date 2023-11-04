@@ -1,21 +1,28 @@
 <?php
 $message = '';
-    require 'database.php';
+require 'database.php';
 
-    if (!empty($_POST['user']) && !empty($_POST['password'])){
+if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['confirma-password'])){
+    $user = $_POST['user'];
+    $password = $_POST['password'];
+    $confirmaPassword = $_POST['confirma-password'];
+
+    if ($password !== $confirmaPassword) {
+        $message = 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.';
+    } else {
         $sql = "INSERT INTO users (user, password) VALUES(:user, :password)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':user', $_POST['user']);
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':user', $user);
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $stmt->bindParam(':password', $hashedPassword);
 
         if ($stmt->execute()){
             $message = 'Usuario creado correctamente';
-        }
-        else{
-            $message = 'Ocurrio un error al crear el usuario, Intentar nuevamente';
+        } else {
+            $message = 'Ocurrió un error al crear el usuario. Inténtalo nuevamente.';
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
