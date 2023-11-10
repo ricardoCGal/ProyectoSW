@@ -44,9 +44,9 @@ if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['confi
     <h1>Registrate</h1>
     <span><a href="login.php"></a></span>
     <form action="signup.php" method="post">
-        <input type="text" name="user" placeholder="Introduce tu usuario">
-        <input type="password" name="password" placeholder="Introduce tu contraseña">
-        <input type="password" name="confirma-password" placeholder="Confirma tu contraseña">
+        <input type="text" name="user" placeholder="Introduce tu usuario" required>
+        <input type="password" name="password" placeholder="Introduce tu contraseña" required>
+        <input type="password" name="confirma-password" placeholder="Confirma tu contraseña" required>
         <input type="submit" value="Continuar">
     </form>
     <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesion</a></p>

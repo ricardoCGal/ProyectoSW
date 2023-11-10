@@ -1,34 +1,248 @@
+*{
+    font-size: 1.5vw;
+}
 body{
     background-color: #212529;
+    color: white;
 }
+/*----------------------Banner-----------------------------*/
 #tit{
-    color: #F7971E;
+    color: skyblue;
     text-align: right;
     font-family: 'Pirata One', cursive;
     font-size: 2.5vw;
     text-decoration: none;
 }
 
-
-/*----------------------------Nav------------------------*/
-.class-elem2{        
-    grid-area: Nav;
+#logo{
+    width: 8vw;
+}
+.log{
+    width: 30px;
 }
 
+
+.contenedor-grid{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 2fr 1fr;
+    grid-template-areas: 'Aside Contenido Contenido'
+                         'Aside Contenido Contenido'
+                         'Footer Footer Footer'
+                        ;
+    grid-gap: 5px;
+}
+/*----------------------------Nav------------------------*/
+
+#bienvenida{
+    text-align: center;
+}
 /*----------------------------Aside------------------------*/
-.class-elem3{        
+.class-elem1{        
     grid-area: Aside;
+}
+ul{
+    list-style-type: none;
+}
+li {
+    margin-bottom: 30px;
+}
+.opc a{
+    text-decoration: none;
+    color: white;
 }
 
 /*----------------------------Cont------------------------*/
-.class-elem4{        
+.class-elem2{        
     grid-area: Contenido;
+}
+.class-elem2 p{
+    text-align: center;
+}
+
+/*-------------------------------*/
+.formulario h1{
+    font-size: 1.7vw;
+}
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.contenedor {
+    background-color: #3e454c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px;
+    text-align: center;    
+    width: 35%;
+}
 
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+}
+
+header{
+    background-color: #22262a;
+    color: white;
+    font-size: 1.5vw;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+input{
+    color: black;
+    margin-bottom: 15px;
+    width: 90%;
+    font-size: 1.2vw
+}
+
+label, textarea {
+    margin-bottom: 15px;
+    width: 90%;
+    font-size: 1.2vw;
+    color: white;
+    text-align: center;
+}
+
+input[type="button"] {
+    background-color: #a6b4ba;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+input[type="submit"]{
+    background-color: #A6B4BA;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.botones-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#container{
+    width: 60%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 5fr;
+        grid-template-areas: 'enc enc enc'
+                             'imgs txt txt'
+                            ;
+        grid-gap: 5px;
+    
+    background-color: #3e454c;
+    color: white;
+    
+    
+}
+
+
+/*------------------Tipos de visualizacion------------------*/
+#container.visualizacion1{
+        width: 60%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 7fr;
+        grid-template-areas: 'enc enc enc'
+                             'imgs txt txt'
+                            ;
+        grid-gap: 5px;
+    
+    background-color: #3e454c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px;
+    text-align: center; 
+}
+
+#container.visualizacion2 {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .1fr .1fr .8fr;
+    grid-template-areas: 'enc enc enc'
+                         'imgs imgs imgs'
+                         'txt txt txt';
+    grid-gap: 5px;
+
+    background-color: #3e454c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px;
+    text-align: center; 
+
+}
+
+#container.visualizacion2 #imgP {
+    max-width: 30%;
+    height: auto;
+}
+
+
+#container.visualizacion3 {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas: 'enc enc enc'
+                         'txt txt imgs';
+    grid-gap: 5px;
+
+    background-color: #3e454c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px;
+    text-align: center; 
+
+}
+/*----------------------------------------------------------*/
+#enc{
+    grid-area: enc;
+    text-align: center;
+}
+
+#imgs{
+    grid-area: imgs;
+    width: 90%;
+    margin: 2px;
+    border: solid black 1px;
+}
+#txt{
+    grid-area: txt;
+    width: 90%;
+    text-align: justify;
+    font-size: 1.4vw;
+    margin: 2px;
+    border: solid black 1px;
+    padding: 10px;
+    color: white;
+}
+
+#imgP{
+    width: 80%;
+    padding: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+.pub{
+    display: block; /* Convierte el botón en un bloque */
+    margin: 0 auto; 
+}
 /*----------------------------Footer------------------------*/
-.class-elem5{        
+.class-elem3{        
     grid-area: Footer;
 }
 

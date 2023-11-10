@@ -39,8 +39,8 @@ session_start();
         <h1 class="head">Inicar Sesion</h1>
         <span><a href="singup.php"></a></span>
     <form action="login.php" method="post">
-        <input type="text" name="user" placeholder="Introduce tu usuario">
-        <input type="password" name="password" placeholder="Introduce tu contraseña" >
+        <input type="text" name="user" placeholder="Introduce tu usuario" required>
+        <input type="password" name="password" placeholder="Introduce tu contraseña" required>
         <input type="submit" value="Continuar">
     </form>
     <p>¿No tienes cuenta? <a href="signup.php">Registrate</a></p>
