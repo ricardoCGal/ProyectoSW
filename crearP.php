@@ -20,12 +20,18 @@
     $titulo = $_POST['Titulo'];
     $imagen = $_POST['imgUrl'];
     $contenido = $_POST['cont'];
+    
+    // Obtener el valor del campo oculto tipo_visualizacion
+    $tipo_visualizacion = isset($_POST['tipo_visualizacion']) ? $_POST['tipo_visualizacion'] : 1;
+
+    date_default_timezone_set('America/Mexico_City');
 
     // Obtener la fecha y hora actual
     $fecha = date("Y-m-d H:i:s");
 
     // Insertar datos en la tabla 'publicaciones'
-    $sql = "INSERT INTO publicaciones (usuario, fecha, titulo, imagen, contenido) VALUES (:usuario, :fecha, :titulo, :imagen, :contenido)";
+    $sql = "INSERT INTO publicaciones (usuario, fecha, titulo, imagen, contenido, tipo_visualizacion) 
+            VALUES (:usuario, :fecha, :titulo, :imagen, :contenido, :tipo_visualizacion)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':usuario', $usuario['user']);
@@ -33,14 +39,17 @@
     $stmt->bindParam(':titulo', $titulo);
     $stmt->bindParam(':imagen', $imagen);
     $stmt->bindParam(':contenido', $contenido);
+    $stmt->bindParam(':tipo_visualizacion', $tipo_visualizacion); // Vincular el valor del tipo de visualización
 
     if ($stmt->execute()) {
         $message = "Publicación creada con éxito";
     } else {
         $message = "Error al crear la publicación: " . $stmt->errorInfo()[2];
     }
-  }
 
+    header('Location: principal.php');
+    exit();
+}
 ?>
 
 
@@ -88,25 +97,31 @@
         </div>
     </nav>
 
-    <p id="bienvenida">En que estas pensando el dia de hoy!!! <?= $usuario['user']; ?></p>
-    <div class="formulario" >
+    <p id="bienvenida">En que estas pensando el día de hoy!!! <?= $usuario['user']; ?></p>
+
+    <div class="formulario">
         <div class="contenedor" id="Registro">
             <header><h1>Publicacion</h1></header>
             <form action="crearP.php" method="POST" onsubmit="mostrarMensaje('<?php echo $message; ?>')">
-              <label for="Titulo">Titulo de la publicacion:</label>
-              <input type="text" id="Titulo" name="Titulo" required>
-              <label for="imgUrl">URL de la imagen:</label>
-              <input type="text" id="imgUrl" name="imgUrl" required>
-              <label for="cont">Contenido de la publicacion:</label>
-              <input type="text" id="cont" name="cont" required>
-              <label for="vista">Tipo de visualizacion</label>
-              <div class="botones-container">
-                  <input type="button" value="1" onclick="ver(1)">
-                  <input type="button" value="2" onclick="ver(2)">
-                  <input type="button" value="3" onclick="ver(3)">
-              </div>
-              <input type="submit" value="Publicar" class="pub" >
-          </form>         
+                <label for="Titulo">Titulo de la publicacion:</label>
+                <input type="text" id="Titulo" name="Titulo" required>
+                <label for="imgUrl">URL de la imagen:</label>
+                <input type="text" id="imgUrl" name="imgUrl" required>
+                <label for="cont">Contenido de la publicacion:</label>
+                <input type="text" id="cont" name="cont" required>
+
+                <input type="hidden" id="tipo_visualizacion" name="tipo_visualizacion" value="1">
+                  <!-- Generamos una variable oculta para almacenar el tipo de visualizacioncon la que
+                        se publica el contenudo -->
+
+                <label for="vista">Tipo de visualizacion</label>
+                <div class="botones-container">
+                    <input type="button" value="1" onclick="ver(1)">
+                    <input type="button" value="2" onclick="ver(2)">
+                    <input type="button" value="3" onclick="ver(3)">
+                </div>
+                <input type="submit" value="Publicar" class="pub">
+            </form>
         </div>
         <div class="contenedor" id="container" name="pubfinal">
             <header id="enc"><h1>Titulo de la publicacion</h1></header>
@@ -117,6 +132,7 @@
                 <p>Inserte el contenido a visualizar <br>(Tipo de visualización 1)</p>
             </div>
         </div>
+    </div>
 
     </div>
 </body>

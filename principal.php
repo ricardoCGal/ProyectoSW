@@ -1,19 +1,33 @@
 <?php
-    session_start();
+     session_start();
 
-    require 'database.php';
-    if (isset($_SESSION['user_id'])){
-        $records = $conn->prepare('SELECT id, user, password FROM users WHERE id = :id');
-        $records->bindParam(':id', $_SESSION['user_id']);
-        $records->execute();
-        $results = $records->fetch(PDO::FETCH_ASSOC);
+     require 'database.php';
+     
+  if (isset($_SESSION['user_id'])) {
+    $records = $conn->prepare('SELECT id, user, password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-        $usuarios = null;
+    $usuario = null;
 
-        if (count($results) > 0){
-            $usuarios = $results;
-        }
+    if ($records->rowCount() > 0) {
+        $usuario = $results;
     }
+  }
+     if (isset($_SESSION['user_id'])){
+        $usuario = $results;
+ 
+         // Obtener todas las publicaciones, no solo las del usuario actual
+         $query = 'SELECT * FROM publicaciones ORDER BY fecha DESC';
+         $statement = $conn->prepare($query);
+         
+         if ($statement->execute()) {
+             $publicaciones = $statement->fetchAll(PDO::FETCH_ASSOC);
+         } else {
+             die("Error al ejecutar la consulta SQL");
+         }
+     }
     
 ?>
 
@@ -57,14 +71,9 @@
           </div>
         </div>
     </nav>
-    <!--<div class="bien" id="bienvenida" style="display: none;">
-      <?php if (!empty($usuarios)): ?>
-          <br>Bienvenido <?= $usuarios['user']; ?>
-          <br>Has ingresado correctamente al Sitio Web
-      <?php endif; ?>
-    </div>-->
+
         
-    <p id="bienvenida">Bienvenido "<?= $usuarios['user']; ?>"</p>
+    <p id="bienvenida">Bienvenido "<?= $usuario['user']; ?>"</p>
     <div class="contenedor-grid">
       <div class="class-elem1"> <!--Aside-->
         <ul class="opc">
@@ -79,20 +88,36 @@
 
         </ul>
       </div>
-      <div class="class-elem2"> <!--Cont-->
-        <p>Sugerencias para ti!</p>
-        <div class="sugerencias">
-          
+      <div class="class-elem2">
+            <p>Sugerencias para ti!</p>
+            <div class="sugerencias">
+                <div class="row row-cols-1 row-cols-md-4"> <!-- Aqui vamos a utilizar Bootstrap para organizar en filas de 4 -->
+                    <?php foreach ($publicaciones as $publicacion) : ?>
+                        <div class="col mb-4">
+                            <div class="publicacion">
+                                <div class="visualizacion<?= $publicacion['tipo_visualizacion']; ?>">
+                                    <header id="enc"><h1 class="pub-tit"><?= $publicacion['titulo']; ?></h1></header>
+                                    <figure id="imgs">
+                                        <img class="imag" src="<?= $publicacion['imagen']; ?>" alt="<?= $publicacion['titulo']; ?>">
+                                    </figure>
+                                    <div id="txt" class="texto">
+                                        <p><?= $publicacion['contenido']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="info-publicacion">
+                                    <p>Publicado por: <?= $publicacion['usuario']; ?> el <?= $publicacion['fecha']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-      </div>
+
       <div class="class-elem3"> <!--Footer-->
         
       </div>
-    </div>
-    
-
-
-
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

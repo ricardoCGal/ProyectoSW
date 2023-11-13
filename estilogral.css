@@ -4,6 +4,7 @@
 body{
     background-color: #212529;
     color: white;
+    margin: 0;
 }
 /*----------------------Banner-----------------------------*/
 #tit{
@@ -22,21 +23,21 @@ body{
 }
 
 
-.contenedor-grid{
-    width: 60%;
+.contenedor-grid {
+    width: 95%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: .5fr 2fr 1fr;
-    grid-template-areas: 'Aside Contenido Contenido'
-                         'Aside Contenido Contenido'
-                         'Footer Footer Footer'
-                        ;
+    grid-template-areas: 'Aside Contenido Contenido Contenido'
+                         'Aside Contenido Contenido Contenido'
+                         'Footer Footer Footer Footer';
     grid-gap: 5px;
 }
 /*----------------------------Nav------------------------*/
 
 #bienvenida{
     text-align: center;
+    color: #F7971E;
 }
 /*----------------------------Aside------------------------*/
 .class-elem1{        
@@ -54,8 +55,9 @@ li {
 }
 
 /*----------------------------Cont------------------------*/
-.class-elem2{        
+.class-elem2 {
     grid-area: Contenido;
+    width: calc(100% - 20px);
 }
 .class-elem2 p{
     text-align: center;
@@ -94,7 +96,6 @@ header{
     color: white;
     font-size: 1.5vw;
     padding: 5px;
-    border-radius: 10px;
 }
 
 input{
@@ -207,10 +208,41 @@ input[type="submit"]{
     text-align: center; 
 
 }
+
+.visualizacion{
+    display: inline-flex;
+}
+
+.info-publicacion p{
+    font-size: .8vw;
+}
+
+.publicacion{
+    font-size: 1vw;
+}
+
+.pub-tit{
+    font-size: 1.5vw;
+}
+
+.imag{
+    width: 50%;
+    padding: 15px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.texto{
+    font-size: 1vw;
+}
 /*----------------------------------------------------------*/
 #enc{
+    width: 90%;
     grid-area: enc;
     text-align: center;
+    margin: 2px;
+    border: solid black 1px;
 }
 
 #imgs{
@@ -238,7 +270,7 @@ input[type="submit"]{
 }
 
 .pub{
-    display: block; /* Convierte el botón en un bloque */
+    display: block; 
     margin: 0 auto; 
 }
 /*----------------------------Footer------------------------*/
