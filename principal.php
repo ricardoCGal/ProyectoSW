@@ -91,26 +91,27 @@
       <div class="class-elem2">
             <p>Sugerencias para ti!</p>
             <div class="sugerencias">
-                <div class="row row-cols-1 row-cols-md-4"> <!-- Aqui vamos a utilizar Bootstrap para organizar en filas de 4 -->
-                    <?php foreach ($publicaciones as $publicacion) : ?>
-                        <div class="col mb-4">
-                            <div class="publicacion">
-                                <div class="visualizacion<?= $publicacion['tipo_visualizacion']; ?>">
-                                    <header id="enc"><h1 class="pub-tit"><?= $publicacion['titulo']; ?></h1></header>
-                                    <figure id="imgs">
-                                        <img class="imag" src="<?= $publicacion['imagen']; ?>" alt="<?= $publicacion['titulo']; ?>">
-                                    </figure>
-                                    <div id="txt" class="texto">
-                                        <p><?= $publicacion['contenido']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="info-publicacion">
-                                    <p>Publicado por: <?= $publicacion['usuario']; ?> el <?= $publicacion['fecha']; ?></p>
-                                </div>
+            <div class="row row-cols-1 row-cols-md-4" >
+                <?php foreach ($publicaciones as $publicacion) : ?>
+                    <div class="col mb-4" >
+                        <a href="publicacion.php">
+                        <div class="publicacion<?= $publicacion['tipo_visualizacion']; ?>">
+                            <header id="enc"><h1 class="pub-tit"><?= $publicacion['titulo']; ?></h1></header>
+                            <figure id="imgs">
+                                <img class="imag" src="<?= $publicacion['imagen']; ?>" alt="<?= $publicacion['titulo']; ?>">
+                            </figure>
+                            <div id="txt" class="texto">
+                                <p>Leer publicacion...</p>
                             </div>
+                            
                         </div>
-                    <?php endforeach; ?>
-                </div>
+                        </a>
+                        <div class="info-publicacion">
+                                <p>Publicado por: <?= $publicacion['usuario']; ?> el <?= $publicacion['fecha']; ?></p>
+                            </div>
+                    </div>
+                  <?php endforeach; ?>
+              </div>
             </div>
         </div>
 
