@@ -21,7 +21,7 @@
     $imagen = $_POST['imgUrl'];
     $contenido = $_POST['cont'];
     
-    // Obtener el valor del campo oculto tipo_visualizacion
+    // Obtenermos el valor del campo oculto tipo_visualizacion
     $tipo_visualizacion = isset($_POST['tipo_visualizacion']) ? $_POST['tipo_visualizacion'] : 1;
 
     date_default_timezone_set('America/Mexico_City');
@@ -39,7 +39,7 @@
     $stmt->bindParam(':titulo', $titulo);
     $stmt->bindParam(':imagen', $imagen);
     $stmt->bindParam(':contenido', $contenido);
-    $stmt->bindParam(':tipo_visualizacion', $tipo_visualizacion); // Vincular el valor del tipo de visualización
+    $stmt->bindParam(':tipo_visualizacion', $tipo_visualizacion); 
 
     if ($stmt->execute()) {
         $message = "Publicación creada con éxito";
