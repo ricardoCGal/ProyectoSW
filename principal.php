@@ -94,7 +94,7 @@
         </ul>
       </div>
       <div class="class-elem2">
-            <p>Sugerencias para ti!</p>
+            <p>Sugerencias populares para ti!</p>
             <div class="sugerencias">
             <div class="row row-cols-1 row-cols-md-4" >
                 <?php foreach ($publicaciones as $publicacion) : ?>

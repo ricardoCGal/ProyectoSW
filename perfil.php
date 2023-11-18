@@ -90,11 +90,15 @@
         </div>
     </nav>
     <div class="container">
+    <p id="bienvenida">Que tal "<?= $usuario['user']; ?>"</p>
+            <br>
+            <p id="bienvenida">¡ Estas son tus publicaciones !</p>
             <?php
             // Verificamos si hay publicaciones para mostrar
             if (isset($publicaciones) && is_array($publicaciones) && count($publicaciones) > 0) {
                 foreach ($publicaciones as $publicacion):
             ?>
+            
                     <div class="class-elem2">
                         <!-- Aquí vamos a mostrar la información de la publicación con los estilos adecuados -->
                         <div id="container" class="visualizacion<?= $publicacion['tipo_visualizacion']; ?>">

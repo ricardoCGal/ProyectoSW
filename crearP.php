@@ -98,7 +98,7 @@
         </div>
     </nav>
 
-    <p id="bienvenida">En que estas pensando el día de hoy!!! <?= $usuario['user']; ?></p>
+    <p id="bienvenida">En que estas pensando el día de hoy!!! "<?= $usuario['user']; ?>"</p>
 
     <div class="formulario">
         <div class="contenedor" id="Registro">
