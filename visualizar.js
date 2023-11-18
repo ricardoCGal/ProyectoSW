@@ -1,5 +1,8 @@
-function ver(tipo, publicacionId) {
-    console.log('Función ver ejecutada con tipo:', tipo, 'y publicacionId:', publicacionId);
+function ver(tipo) {
+    console.log('Función ver ejecutada con tipo:', tipo);
+
+    // Actualiza el campo oculto tipo_visualizacion
+    document.getElementById('tipo_visualizacion').value = tipo;
 
     var titulo = document.getElementById('Titulo').value;
     var imgUrl = document.getElementById('imgUrl').value;

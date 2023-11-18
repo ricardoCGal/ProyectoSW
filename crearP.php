@@ -42,11 +42,12 @@
     $stmt->bindParam(':tipo_visualizacion', $tipo_visualizacion); 
 
     if ($stmt->execute()) {
-        $message = "Publicación creada con éxito";
-    } else {
-        $message = "Error al crear la publicación: " . $stmt->errorInfo()[2];
-    }
-
+      $message = "Publicación creada con éxito";
+      echo json_encode(['success' => true, 'message' => $message]);
+  } else {
+      $message = "Error al crear la publicación: " . $stmt->errorInfo()[2];
+      echo json_encode(['success' => false, 'message' => $message]);
+  }
     header('Location: principal.php');
     exit();
 }

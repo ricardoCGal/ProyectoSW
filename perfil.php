@@ -125,7 +125,7 @@
             <?php
                 endforeach;
             } else {
-                echo '<p>No hay publicaciones para mostrar.</p>';
+                echo '<p>No hay publicaciones para mostrar, por favor crea una publicacion para vizualizarla en este apartado.</p>';
             }
             ?>
     </div>
