@@ -26,10 +26,10 @@
 
     date_default_timezone_set('America/Mexico_City');
 
-    // Obtener la fecha y hora actual
+    // obtenemos la fecha y hora actual
     $fecha = date("Y-m-d H:i:s");
 
-    // Insertar datos en la tabla 'publicaciones'
+    // inseramos datos en la tabla 'publicaciones'
     $sql = "INSERT INTO publicaciones (usuario, fecha, titulo, imagen, contenido, tipo_visualizacion) 
             VALUES (:usuario, :fecha, :titulo, :imagen, :contenido, :tipo_visualizacion)";
 
